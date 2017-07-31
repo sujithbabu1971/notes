@@ -79,6 +79,18 @@ i=10; inside a function, then i is a global varaibale and not limited to that fu
 So use 
 var i=10;
 
+
+Debugging node js applications
+===============================
+Install nodeclipse. This installation is one where you open an eclipse empty workspace and then drag and drop an image.  Refer http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2566102 for details. This will simulate the Help--> install new software option in eclipse. 
+
+After the installation, create/import project as Node.js Express project. 
+Right click on the starting file (not the project directory) and select the 1st option (Node appication). Do not select the second option (Node.js application)
+This will start the application on the default debug port of 5858.
+After that the debugging, variable expressions are as in the case of Java (Not as user friendly since some of the options that we are used with java debugging may not work here.). To set the breakpoint left click on the  margin (not right click on margin as I am used to in java eclipse debugging).
+How to debug video is available at http://www.nodeclipse.org/usage
+
+
 Mongo DB
 ===============
 Table in RDBMS ==> Collections in Mongo DB.
