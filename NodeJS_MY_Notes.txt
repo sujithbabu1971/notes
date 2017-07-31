@@ -94,3 +94,7 @@ How to debug video is available at http://www.nodeclipse.org/usage
 Mongo DB
 ===============
 Table in RDBMS ==> Collections in Mongo DB.
+database ==> database
+tuple/row ==> document (this is a json document)
+Mongodb is called a document database. 
+It is a no fixed schema (means that there are tables do not need specific columns)
