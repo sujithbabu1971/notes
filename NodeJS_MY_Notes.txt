@@ -51,7 +51,7 @@ npm install ---> this will install all dependancies
 npm start --> default start command in package.json. This has the start scripts in the ./bin/www folder that was created by express command.
 
 YSLOW
-===================
+=====================
 
 JADE template
 ==============
