@@ -1,0 +1,84 @@
+Core moules ( includes those not requiriing require keword, Global modules)
+NPM (Third party modules)
+Custom modules
+
+NPM means you can download modules, you can upload modules and also NPM is also a website. When NodeJS is insalled, NPM is also installed.
+
+Most calls are async in nodejs.
+Ways of running nodejs
+	(a) node A.js  --- > Package.json is not used
+	(b) npm run A.js
+	(c) nodemon A.js
+
+
+GIT (1st time)
+========================
+git init
+git add -A
+git commit -am "comment"  // This commits all added and modified files
+git config --global user.name "sujithbabu1971" // May be there is a better way to force username
+git config --global user.email "sujithkp@yahoo.com" // May be there is a better way to force username
+git remote add ExpressJSSamples https://github.com/sujithbabu1971/ExpressJSSamples.git
+git push -u  ExpressJSSamples // -u sets the files for pull also. This is important
+
+GIT . Committing a modified file after the 1st time.
+========================
+git add filename
+git commit -m "message" filename
+git push 
+Note:-- Only adding the file and committing worked for me. May be, there is a better way such as just commit. (Note:-- Later found that if we use -u in git push the 1st time, this step is not needed).
+
+
+
+Install express
+express-handlebars
+express-session
+body-parser
+
+
+With -g (global installation), the --save option that saves into the package.json file does not seem to be working
+
+
+For express-generator
+=====================
+First install express-generator globally. We do not need this as a dependancy to the project for obvious reasons.
+Then "express myapp". This will create myapp with all the required directory structire. jade is the default template
+"express --ejs myapp"  --> The template engine become ejs
+"express --hbs myapp"  --> The template engine become handlebars
+Fiddle around with these options to understand all that are available. 
+Then cd to myapp directory
+npm install ---> this will install all dependancies
+npm start --> default start command in package.json. This has the start scripts in the ./bin/www folder that was created by express command.
+
+YSLOW
+=================
+
+JADE template
+==============
+No need to close html tags
+Use either whitesapce or tab for indentation (Cant mix)
+Even if you do not use it, div tag is assumed as the 1st element.
+# is for id attribute and . is for class attribute.
+Use html2jade for html to jade code conversion. Not all may be converted well. For an example, take care of the varaibles after the conversion.
+To include text, just input it after the the tag. Eg: h1 I am good ===>  <h1> I am good</h1>
+<input type+"text" placeholder="Username"/> in html ===> input(type="text",placeholder=="UserName")
+To access a varaiblename value use =
+eg:-- title=name . In this html <title> gets filled with the value from the name varaible.
+to inject java scrript use -. (In ejs it was <% %> like in JSP)
+
+When userName is a variable
+the following would not work
+p.text-center Hello =userName
+instead use 
+p.text-center Hello 
+              =userName
+Global scope tip in java script
+==============
+If you use 
+i=10; inside a function, then i is a global varaibale and not limited to that function. Avoid this to ensure the variables are not conflicting.
+So use 
+var i=10;
+
+Mongo DB
+===============
+Table in RDBMS ==> Collections in Mongo DB.
