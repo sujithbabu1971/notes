@@ -98,3 +98,62 @@ database ==> database
 tuple/row ==> document (this is a json document)
 Mongodb is called a document database. 
 It is a no fixed schema (means that there are tables do not need specific columns)
+
+Mongo DB Installation and commands
+===============
+Install mongodb
+Add the bin to path
+create a folder for data . Use md <folder> for this
+start db by  mongod --dbpath <above_folder>
+
+Now to connect use mongo command (This is similar to sqlplus)
+show dbs   ---> Shows all databases
+use <dbname> -- Goes to that database. It will also create that db.
+to shutdown the db server gracefully,	
+	use admin  --> So that you are in admin database
+	db.shutdownServer()
+	exit  --> After the db is shutdown, use this
+
+To see collections (//r to tables in RDBMS), 
+	use dbname
+	show collections
+To see logs
+	show log
+
+To create/drop collections
+	use <dbname> --> This will swich to the db. If not existimg, it will create also.
+	db.createCollection('express-templates') --> This creates the express-templates collections
+	// to drop use the following
+	var mydb = db.getCollection('express-templates');
+	mydb.drop();
+	// The above will return true if existing
+
+To view all documents(rows) in the collection, do the following
+	var mydb = db.getCollection('express-templates');
+	mydb.find();
+To view specific documents(rows) in the collection, do the following
+	var mydb = db.getCollection('express-templates');
+	mydb.find({"runs":6,"batsman":"Sunil Gavaskar"});  -->  This will find  records that has Sunil gavaskar as the batsman and runs=6
+Insert, Delete. Update
+=====================
+var mydb = db.getCollection('cricket');
+mydb.insert({'batsman': 'Tendulkar', 'score':6});
+mydb.remove({'score':6});
+mydb.update({'score':6,'batsman':'Tendulkar'},  {$set:{'score':10}},   {upsert:true,multi:true})  ---> Updates the score to 10P.
+Update has multiple options. The general synats is 
+	db.collection.update(
+	   <query>,
+	   <update>,
+	   {
+	     upsert: <boolean>,
+	     multi: <boolean>,
+	     writeConcern: <document>,
+	     collation: <document>
+	   }
+	)
+	Read them at 
+	https://docs.mongodb.com/manual/reference/method/db.collection.update/
+
+	Details OF update options such as *$SET, $UNSET etc are available at 
+
+	https://docs.mongodb.com/manual/reference/operator/update-field/
