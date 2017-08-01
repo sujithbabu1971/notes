@@ -9,6 +9,18 @@ Ways of running nodejs
 	(a) node A.js  --- > Package.json is not used
 	(b) npm run A.js
 	(c) nodemon A.js
+Node JS core APIs
+=======================
+https://nodejs.org/dist/latest-v6.x/docs/api/console.html
+Note:-- The above is for 6.X series
+
+Node JS third party APIs
+=======================
+You can search for the package in https://www.npmjs.com/. Search for that in the textbox 'find packages'.
+Once you install it, go to the node_modules/<module_name>/README.md file. 
+That file api-doc/documentation API links
+TODO:-- May be there is a single site where all the 3rd party module APIs are hosted 
+
 
 
 GIT (1st time)
@@ -157,3 +169,21 @@ Update has multiple options. The general synats is
 	Details OF update options such as *$SET, $UNSET etc are available at 
 
 	https://docs.mongodb.com/manual/reference/operator/update-field/
+
+
+MongoDB- Node JS interaction
+=============================
+(a) by native mongodb library --> Suppossed to be more powerful. npm install mongodb
+(b) by mongoose library 
+mongodb://localhost/cricket --> did not connect. Had to use mongodb://127.0.0.1/cricket
+npm init is always needed first before doing npm install. Otherwise, the node_modules would not be created.
+
+Hazelcast is the default caching mechanism with WSO2
+======================================================
+
+MongoDB namespace
+======================
+Search for https://docs.mongodb.com/manual/reference/glossary/ to understand what a namespace is
+
+Db--> Collections --> Documents
+=====================================
