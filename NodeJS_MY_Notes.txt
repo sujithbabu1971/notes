@@ -187,3 +187,7 @@ Search for https://docs.mongodb.com/manual/reference/glossary/ to understand wha
 
 Db--> Collections --> Documents
 =====================================
+
+MongoDB query tutorials
+==============================
+https://docs.mongodb.com/manual/tutorial/query-documents/
