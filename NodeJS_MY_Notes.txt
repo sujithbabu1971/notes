@@ -174,7 +174,7 @@ Update has multiple options. The general synats is
 MongoDB- Node JS interaction
 =============================
 (a) by native mongodb library --> Suppossed to be more powerful. npm install mongodb
-(b) by mongoose library 
+(b) by mongoose library --npm install mongoose
 mongodb://localhost/cricket --> did not connect. Had to use mongodb://127.0.0.1/cricket
 npm init is always needed first before doing npm install. Otherwise, the node_modules would not be created.
 
@@ -191,3 +191,24 @@ Db--> Collections --> Documents
 MongoDB query tutorials
 ==============================
 https://docs.mongodb.com/manual/tutorial/query-documents/
+What options can be used in find (query) are available at https://mongodb.github.io/node-mongodb-native/api-generated/collection.html#find
+Native MongoDB Driver v/s Mongoose driver
+===========================================
+ MongoDB Driver is more powerful. 
+ The advantage of Mongoose is that it is similar to an RDBMS driver. So programmers could be more familiar with it. It has SQL like syntax. Also, mongoose is better suited for fixed coulmns collections. Helps in validating the data. To do al these, we will need to write your own code in natoive mongod db. But it is provided out of the box in MongoDB.
+ Mongoose allows you to define a schema (basically your collection structure ie; table definition).
+
+ Mongoose API
+ ==============
+ The API is available at http://mongoosejs.com/docs/api.html
+ It is not well organized. Read it carefully along with sample programs to understand fully well.
+
+GROUP BY SYNTAX in MONGODB
+=============================
+Find the group by syntax in mongodb at 
+http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html
+
+Validation on Insert
+=========================
+To understand how to do validation on insert, Refer the program mongooseaddrecordwithvalidation.js.
+Pay attention to the syntax of the callback function validate and also to the syntax err.errors.runs.message
