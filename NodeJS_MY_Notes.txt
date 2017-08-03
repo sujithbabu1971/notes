@@ -101,7 +101,9 @@ Right click on the starting file (not the project directory) and select the 1st 
 This will start the application on the default debug port of 5858.
 After that the debugging, variable expressions are as in the case of Java (Not as user friendly since some of the options that we are used with java debugging may not work here.). To set the breakpoint left click on the  margin (not right click on margin as I am used to in java eclipse debugging).
 How to debug video is available at http://www.nodeclipse.org/usage
-
+Good MongoDB material
+=======================
+https://www.tutorialspoint.com/mongodb/
 
 Mongo DB
 ===============
@@ -132,29 +134,34 @@ To see collections (//r to tables in RDBMS),
 To see logs
 	show log
 
-To create/drop collections
+To create/drop dtabase/collections
 	use <dbname> --> This will swich to the db. If not existimg, it will create also.
+	dropDatabase() will drop the current database
 	db.createCollection('express-templates') --> This creates the express-templates collections
+	To display the database when using "show dbs", at least one collection should be created in that database.
 	// to drop use the following
 	var mydb = db.getCollection('express-templates');
-	mydb.drop();
+	mydb.drop();  --> db.dbname.collection_name.drop() is an alternate syntax
 	// The above will return true if existing
 
 To view all documents(rows) in the collection, do the following
 	var mydb = db.getCollection('express-templates');
 	mydb.find();
+	can also do the following in mongo shell
+	db.express-templates.find();
+	To beautify the above use db.express-templates.find().pretty();
 To view specific documents(rows) in the collection, do the following
 	var mydb = db.getCollection('express-templates');
 	mydb.find({"runs":6,"batsman":"Sunil Gavaskar"});  -->  This will find  records that has Sunil gavaskar as the batsman and runs=6
 Insert, Delete. Update
 =====================
 var mydb = db.getCollection('cricket');
-mydb.insert({'batsman': 'Tendulkar', 'score':6});
-mydb.remove({'score':6});
-mydb.update({'score':6,'batsman':'Tendulkar'},  {$set:{'score':10}},   {upsert:true,multi:true})  ---> Updates the score to 10P.
+mydb.insert({'batsman': 'Tendulkar', 'score':6});  ---> db.collection_name.insert({YOUR_JSON}). This will create the collection also if it not pre-existing.
+mydb.remove({'score':6}); ---> equivalent syntax is db.collection_name.remove({YOUR_JSON}).
+mydb.update({'score':6,'batsman':'Tendulkar'},  {$set:{'score':10}},   {upsert:true,multi:true})  ---> Updates the score to 10P.--> equivalent syntax is db.collection_name.update({YOUR_JSON}).
 Update has multiple options. The general synats is 
 	db.collection.update(
-	   <query>,
+	   < >,
 	   <update>,
 	   {
 	     upsert: <boolean>,
@@ -208,7 +215,27 @@ GROUP BY SYNTAX in MONGODB
 Find the group by syntax in mongodb at 
 http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html
 
+
+
 Validation on Insert
 =========================
 To understand how to do validation on insert, Refer the program mongooseaddrecordwithvalidation.js.
 Pay attention to the syntax of the callback function validate and also to the syntax err.errors.runs.message
+
+Adobe Connect - Moxtra selection
+==================================
+
+WYSWYG selection
+==================
+TinyMCE  --> Existing
+tkWWW etc
+Fond list of wyswyg editors at https://en.wikipedia.org/wiki/List_of_HTML_editors
+https://textbox.io/  
+Also explored webdav (It uses HTTP PUT)
+
+ETL v/s ESB
+==============
+ETL ---> Talend, Pentaho. Talend also have esb capabilties.
+ESB ------> WSO2. Apache synapse, Apache camel, Apache ServiceMix, MULE
+Apache ServiceMix is based on Apache Camel.
+WSO2's esb engine is Apache synapse.
