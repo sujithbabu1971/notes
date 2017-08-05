@@ -239,3 +239,46 @@ ETL ---> Talend, Pentaho. Talend also have esb capabilties.
 ESB ------> WSO2. Apache synapse, Apache camel, Apache ServiceMix, MULE
 Apache ServiceMix is based on Apache Camel.
 WSO2's esb engine is Apache synapse.
+
+Name of our project can not be the same as the modules that we are going to install
+=====================================================================================
+font-awesome
+===================
+ http://fontawesome.io/ has has got beautiful font and css
+
+ 
+ XHR
+ ===========
+XHR is simple old  XMLHttpRequest on which ajax calls are based on.
+XMLHttpRequest (XHR) is an API that can be used by JavaScript, JScript, VBScript, and other web browser scripting languages to transfer and manipulate XML data to and from a webserver using HTTP, establishing an independent connection channel between a webpage's Client-Side and Server-Side
+
+Node JS with rest end points
+================================
+If we are just using Node JS for rest APIs, then instead of 
+response.render("PageName", {json object}); 
+do the following
+response.json({json object})
+
+Node JS Gaps as compared with the established Java/J2EE web based technolgies
+==============================================================================
+(a) Connection pooling
+(b) How does I18n work ?
+(c) Log levels as in log4j/commons logger. Chalk gives only colour coding to the extendt that I am aware of it. It does not provide file based loggers that we would need for debugging production issues. It does not provide log level based logging as far as I am aware of it.
+
+pre method
+==================
+pre method on let us say save, will call the pre method and only then call the save method.
+The syntax for pre method is something like
+pre('originalMethodName', function(next) {
+	// Based on logic call next() which will call the actual method.
+}
+This synatx helps a lot in validate methods.
+
+
+The greatest purpose of package.json is to ensure that the copy of the dependancy libraries are not copied from github to the deployment (heroku) environment. The deployment environment like heroku already has copies of that. However the question that I have is, what happens in case of a version conflict ? is such a version conflict possible at all as the dependacies mentioned in the package.json also.
+
+Unlike import in JAVA, the require in node js should be in the same order as they are called. 
+===============================================================================================
+Eg:-- If module a is used before module b, then require(module a) should appear earlier than require(module b)
+Session, bodyparser, static, template engines(???) are all middlewares in node js concepts.
+===============================================================================================
