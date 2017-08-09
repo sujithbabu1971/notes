@@ -282,3 +282,14 @@ Unlike import in JAVA, the require in node js should be in the same order as the
 Eg:-- If module a is used before module b, then require(module a) should appear earlier than require(module b)
 Session, bodyparser, static, template engines(???) are all middlewares in node js concepts.
 ===============================================================================================
+
+Difference between Module and package
+==================================================================
+https://docs.npmjs.com/how-npm-works/packages
+
+Express-session options
+==========================
+ Refer https:www.npmjs.com/package/express-session-expire-timeout for various session option . The session timeout default seems to be infinity.
+ cookie: { secure: true } also below would set secure flag on the cookie. But for this  to work, https is needed. 
+ app.use(session({"secret":"secret", "resave":"true", "saveUninitialized":"true"})); //deprecated
+
