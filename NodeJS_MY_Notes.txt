@@ -245,6 +245,7 @@ Name of our project can not be the same as the modules that we are going to inst
 font-awesome
 ===================
  http://fontawesome.io/ has has got beautiful font and css
+ Use https://www.tutorialspoint.com/web_icons/ for font-awesome tutorials
 
  
  XHR
