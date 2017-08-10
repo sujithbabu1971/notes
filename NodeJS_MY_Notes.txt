@@ -336,3 +336,7 @@ The above will create the collection cricketScores if it not already present in 
 mongoexport, mongoimport command detailss are available at https://docs.mongodb.com/manual/reference/program/. Click on MongoDB Package Components link on the left panel.  
 Details are also available on MLabs after login on the 'Tools' tab.
 
+Apache Kafka v/s Rabbit MQ v/s Active MQ v/s Open JMS
+=======================================================
+We chose Rabbit MQ for our product (agConnect) since it has some indirect way of fully supporting secured multi-tenancy where tenant data is not mixed-up. They use vhosts (same as in apache web server) for this.
+
