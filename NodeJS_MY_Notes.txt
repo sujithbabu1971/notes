@@ -311,3 +311,28 @@ The details are available in the mongoose API at
 http://mongoosejs.com/docs/api.html#schema_Schema
 A typical use would be to hash a password before saving it. Code sample is available in the db.js of leave-the-marks-master project in the Day 5 code.
 
+MongoLabs (MLabs), MongoImport and MongoExport
+=========================================
+MLabs URL to login ---> https://mlab.com/login/
+username:-- sujithbabu
+Password: Power@30
+DB Name that is created : sujith
+DB user name: sujithuser
+DN Password: sujithpassword
+	To connect using the mongo shell:
+		mongo ds157500.mlab.com:57500/sujith -u sujithuser -p sujithpassword
+
+	To connect using a driver via the standard MongoDB URI (what's this?):
+		mongodb://sujithuser:sujithpassword@ds157500.mlab.com:57500/sujith
+
+To import the collection named cricketScores from local database named cricket to the file 'cricketScores.json', use the following command (NOT in Mongo shell. This has to be done in regular command prompt)
+mongoexport --db cricket --collection cricketScores --out cricketScores.json
+
+Now you can import to the remote cloud database like the below (Again, NOT in Mongo shell. This has to be done in regular command prompt)
+
+mongoimport -h ds157500.mlab.com:57500 -d sujith -c cricketScores -u sujithuser -p sujithpassword --file cricketScores.json
+The above will create the collection cricketScores if it not already present in the database. If already present, that will be reused.
+
+mongoexport, mongoimport command detailss are available at https://docs.mongodb.com/manual/reference/program/. Click on MongoDB Package Components link on the left panel.  
+Details are also available on MLabs after login on the 'Tools' tab.
+
