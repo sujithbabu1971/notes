@@ -340,3 +340,9 @@ Apache Kafka v/s Rabbit MQ v/s Active MQ v/s Open JMS
 =======================================================
 We chose Rabbit MQ for our product (agConnect) since it has some indirect way of fully supporting secured multi-tenancy where tenant data is not mixed-up. They use vhosts (same as in apache web server) for this.
 
+Web Socket is a specification in HTML 5. socket.io is an implementation of it in Node Js. WS.io, engine.io are other implemenations of web socket html5 specification in node.js 
+============================================================================
+
+
+
+
