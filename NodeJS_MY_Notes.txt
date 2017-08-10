@@ -294,3 +294,20 @@ Express-session options
  cookie: { secure: true } also below would set secure flag on the cookie. But for this  to work, https is needed. 
  app.use(session({"secret":"secret", "resave":"true", "saveUninitialized":"true"})); //deprecated
 
+ method-override NPM package
+ ==============================
+Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
+https://www.npmjs.com/package/method-override
+Express error handling 400 and 500 series errors and other errors
+==================================================================
+http://expressjs.com/en/guide/error-handling.html
+All details are in that link. 
+res.status(500).send(); ===> Sends 500 error
+
+PRE & POST Methods
+========================
+Mongoose schema has pre and post methods that can be called before let us say, save method of a model.
+The details are available in the mongoose API at 
+http://mongoosejs.com/docs/api.html#schema_Schema
+A typical use would be to hash a password before saving it. Code sample is available in the db.js of leave-the-marks-master project in the Day 5 code.
+
