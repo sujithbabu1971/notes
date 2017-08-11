@@ -353,3 +353,12 @@ In web sockets, there is a server socket and a client socket. The connected meth
 io.emit() in server code emits message to all the clients. socket.emit() emits message to only that socket.
 scoekt.on is an event.
 socket.emit is a method.
+
+
+STATIC middleware details
+===========================
+// This folder is the one from the static files are served. 
+// By default, the index.html is the index file
+app.use(exp.static(__dirname+ "/public"));
+
+By default the index.html is the index file. So / will match this index.html
