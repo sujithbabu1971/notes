@@ -340,9 +340,16 @@ Apache Kafka v/s Rabbit MQ v/s Active MQ v/s Open JMS
 =======================================================
 We chose Rabbit MQ for our product (agConnect) since it has some indirect way of fully supporting secured multi-tenancy where tenant data is not mixed-up. They use vhosts (same as in apache web server) for this.
 
-Web Socket is a specification in HTML 5. socket.io is an implementation of it in Node Js. WS.io, engine.io are other implemenations of web socket html5 specification in node.js 
+Web Socket is a specification in HTML 5. Socket.io is an implementation of it in Node Js. WS.io, engine.io are other implemenations of web socket html5 specification in node.js 
 ============================================================================
 
+HttpServer core module API v/s Express third party API v/s Sockets.io API
+============================================================================
+It is either express or http server in node js generally. We use express because it is more powerful (similar to JSP in J2ee terms), whereas http server is similar to servlets and not so poweful. For this reason, in general, we use the third party express package and not the httpServer APIs that are core modules of node.js. But for sockets.io APIs, we need httpServer even when we use express.
 
-
-
+Socket.io
+===================
+In web sockets, there is a server socket and a client socket. The connected method(event) is on the server socket side. But the disconnect and chat-message are on the client socket. Note that while connected and disconnected are standard API events, chat-message is our own custom event name and the name can be anything.
+io.emit() in server code emits message to all the clients. socket.emit() emits message to only that socket.
+scoekt.on is an event.
+socket.emit is a method.
