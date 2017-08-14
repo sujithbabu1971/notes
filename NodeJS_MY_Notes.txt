@@ -362,3 +362,76 @@ STATIC middleware details
 app.use(exp.static(__dirname+ "/public"));
 
 By default the index.html is the index file. So / will match this index.html
+Web Sockets good material
+===============================
+https://os.alfajango.com/websockets-slides/#/
+
+connection and disconnect are the events in Socket.io
+==========================================================
+
+Sockets.io ---> How to create separate rooms for chats
+==========================================================
+Use Namespaces for the same.
+Socket.IO allows you to “namespace” your sockets, which essentially means assigning different endpoints or paths.
+Refer the API https://socket.io/docs/rooms-and-namespaces/ for that. It has join method. There does not seem to be any explicit leave method as disconnect event seems to be enough.
+
+Events in node.js
+=====================
+Events is a core module.
+The core API is https://nodejs.org/dist/latest-v6.x/docs/api/events.html
+EventEmitter is the base module. All methods on this is available at https://nodejs.org/dist/latest-v6.x/docs/api/events.html
+Obviously sockets.io extends from events module if we can compare this with JAVA.
+Sample code is as below. 
+
+		const EventEmitter = require('events');
+
+		class MyEmitter extends EventEmitter {}
+
+		const myEmitter = new MyEmitter();
+		// on is the key word.
+		myEmitter.on('event name', () => {
+		  console.log('an event occurred!');
+		});
+		myEmitter.emit('event name');
+
+
+		Asynchronous vs. Synchronous#
+			The EventListener calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the setImmediate() or process.nextTick() methods:
+
+		const myEmitter = new MyEmitter();
+		myEmitter.on('event', (a, b) => {
+		  setImmediate(() => {
+		    console.log('this happens asynchronously');
+		  });
+		});
+		myEmitter.emit('event', 'a', 'b');
+		
+		Handling events only once#
+		When a listener is registered using the eventEmitter.on() method, that listener will be invoked every time the named event is emitted.
+
+		const myEmitter = new MyEmitter();
+		let m = 0;
+		myEmitter.on('event', () => {
+		  console.log(++m);
+		});
+		myEmitter.emit('event');
+		// Prints: 1
+		myEmitter.emit('event');
+		// Prints: 2
+		Using the eventEmitter.once() method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and then called.
+
+		const myEmitter = new MyEmitter();
+		let m = 0;
+		myEmitter.once('event', () => {
+		  console.log(++m);
+		});
+		myEmitter.emit('event');
+		// Prints: 1
+		myEmitter.emit('event');
+		// Ignored
+
+WebRTC
+==================
+WebRTC ("Web Real-Time Communication") is a collection of communications protocols and application programming interfaces that enable real-time communication over peer-to-peer connections. This allows web browsers to not only request resources from backend servers, but also real-time information from browsers of other users.
+
+This enables applications such as video conferencing, file transfer, chat, or desktop sharing without the need of either internal or external plugins.[1]
