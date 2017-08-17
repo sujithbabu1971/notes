@@ -438,3 +438,25 @@ This enables applications such as video conferencing, file transfer, chat, or de
 
 
 The idea in Sockets.io is to EMIT from client and server handling that with ON. During this ON processing, the server will EMIT and the client will have to handle with ON. You just need to understand this and get the programming cycle right. 
+
+
+GRUNT, GULP Tools
+==================
+is in memory while creates temporary files
+
+Install GRUN/GULP in dev dependancy mode
+========================================================================
+npm install grunt --save-dev  --> For grunt command. Set path to the bin under <<>Installation_Directory>\node_modules\grunt\bin.
+It is better to install all grunt and gulp related packages with global scope as they are just development dependancies.
+This will install "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+
+Other synatx variations like does not install grunt/gulp as dep dependancy only.
+
+Also install npm install grunt-contrib-cssmin --save-dev --> For minification of css script
+Provide Gruntfile.js / gulpfile.js. (Case sensitive)
+npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back.). To avoid the mangling so that we can read the code better, use mangle:false
+
+
+Also install npm install grunt-contrib-watch --save-dev ---> This is to ensure minification after each edit without having to run the grunt minify task again.
