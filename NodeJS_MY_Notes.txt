@@ -442,7 +442,13 @@ The idea in Sockets.io is to EMIT from client and server handling that with ON. 
 
 GRUNT, GULP Tools
 ==================
-is in memory while creates temporary files
+For GRUNT refer https://gruntjs.com/ This is the official material.
+GULP is in memory while GRUNT creates temporary files. So obviously GULP is faster.
+Also GULP has piping feature.
+GULP is asynchronous in nature with node js synatx. GRUNT is more like a configuration language.
+GULP is overtaking GRUNT, 
+GULP has many plugins for reactjs, angular js etc https://gulpjs.com/plugins/
+
 
 Install GRUN/GULP in dev dependancy mode
 ========================================================================
@@ -456,7 +462,47 @@ Other synatx variations like does not install grunt/gulp as dep dependancy only.
 
 Also install npm install grunt-contrib-cssmin --save-dev --> For minification of css script
 Provide Gruntfile.js / gulpfile.js. (Case sensitive)
-npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back.). To avoid the mangling so that we can read the code better, use mangle:false
+npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names are shortened.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true.
 
 
 Also install npm install grunt-contrib-watch --save-dev ---> This is to ensure minification after each edit without having to run the grunt minify task again.
+combine in css-min and jscript files mean minifying first and then combining
+GULP
+============
+npm install gulp --save-dev   ----> GULP
+npm install gulp-cssnano --save-dev ----> GULP css minification
+npm install gulp-concat --save-dev ----> GULP file joining (both css and java script)
+npm install gulp-uglify --save-dev ----> GULP file joining (both css and java script)
+Watch is also supported in GULP. But it does not need another installable unlike GRUNT.
+
+In GULP, the task names can be anything unlike GRUNT where it was alwyas fixed. For an example, I tried to change the uglify name to uglifyWithAnotherSyntax in gGRUNT and it did not work.
+Here also, please mangle option is to be set to false to avoid variable renaming.
+GULP syntax is similar to node js synatx.
+GULP has many plugins for reactjs, angular js etc https://gulpjs.com/plugins/
+
+Watch out for the version difference between the GULP global version that provides GULP command and the local GULP version that is instaled in the node_modules of the project 
+
+Java_Code_Coverage_Tools
+=========================
+Cobertura
+
+Browser can download only two files at a time
+==============================================
+
+GRUNT is more like a configuration language. But GULP is an asynchronous node js code.
+========================================================================================
+Linting is a generic term for finding out issues in code. Refer https://en.wikipedia.org/wiki/Lint_%28software%29 . But in java script terminology, it seems to mean verifying potential syntax error during build stage itself since otherwise an intrepreted language like java script will check it only at the runtime.
+
+To update npm itelf
+======================
+To update npm itelf use
+npm update -g npm
+
+Difference between Grunt-cli and grunt
+=======================================
+cli stands for command line. It seems to install the command, but for it to work correctly grunt also should be installed. This seems to be the difference. The details are available at https://gruntjs.com/getting-started. However, on first reading the difference is not very clear.
+The above mechanism allows GRUNT version to be different for each project. Same is the case for GULP
+GULP uses streams
+
+FS Module in Node JS is similar to IO package in JAVA
+=======================================================
