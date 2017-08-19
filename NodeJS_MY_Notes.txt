@@ -462,20 +462,21 @@ Other synatx variations like does not install grunt/gulp as dep dependancy only.
 
 Also install npm install grunt-contrib-cssmin --save-dev --> For minification of css script
 Provide Gruntfile.js / gulpfile.js. (Case sensitive)
-npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names are shortened.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true.
+npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names are shortened.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true in both GRUNT and GULP (I have verified this with hands-on exercise in both GRUNT and GULP).
 
 
 Also install npm install grunt-contrib-watch --save-dev ---> This is to ensure minification after each edit without having to run the grunt minify task again.
 combine in css-min and jscript files mean minifying first and then combining
 GULP
 ============
+https://gulpjs.com/ is the official material
 npm install gulp --save-dev   ----> GULP
 npm install gulp-cssnano --save-dev ----> GULP css minification
 npm install gulp-concat --save-dev ----> GULP file joining (both css and java script)
 npm install gulp-uglify --save-dev ----> GULP file joining (both css and java script)
 Watch is also supported in GULP. But it does not need another installable unlike GRUNT.
 
-In GULP, the task names can be anything unlike GRUNT where it was alwyas fixed. For an example, I tried to change the uglify name to uglifyWithAnotherSyntax in gGRUNT and it did not work.
+In GULP, the task names can be anything unlike GRUNT where it was alwyas fixed. For an example, I tried to change the uglify name to uglifyWithAnotherSyntax in gGRUNT and it did not work.But in GULP this worked.
 Here also, please mangle option is to be set to false to avoid variable renaming.
 GULP syntax is similar to node js synatx.
 GULP has many plugins for reactjs, angular js etc https://gulpjs.com/plugins/
@@ -501,8 +502,15 @@ npm update -g npm
 Difference between Grunt-cli and grunt
 =======================================
 cli stands for command line. It seems to install the command, but for it to work correctly grunt also should be installed. This seems to be the difference. The details are available at https://gruntjs.com/getting-started. However, on first reading the difference is not very clear.
-The above mechanism allows GRUNT version to be different for each project. Same is the case for GULP
+The above mechanism allows GRUNT version to be different for each project. Same is the case for GULP. It seems to insist on using the GRUNT in the local node_modules directory always and not the ones installed globally.
 GULP uses streams
+====================
 
 FS Module in Node JS is similar to IO package in JAVA
 =======================================================
+FS Module in Node JS is similar to IO package in JAVA
+
+WATCH in both GRUNT and GULP takes effect only after changing contents. It does not run the 1st time. This is the default behaviour at least.
+================================================================================================================================================
+May be there are options to change them.
+=========================================================
