@@ -573,10 +573,34 @@ tier that does not have any session/request/response like objects.
 ===================================================================
 In traditional Java/J2EE,we have fixed this issue by using cacus (in Struts) or Mock objects that simulates request/response/web servers. Here the chai-http seems to be for this purpose.
 
+
+CHAI-HTTP
+=================
+https://github.com/chaijs/chai-http
+It seems that chai-http needs to be installed locally as a dev-dependancy. For me, installing MOCHA and CHAI as global dependacies and not mentioning them in package-json worked. However the same for chai-http resulted in module not found for 'chai-http'. In short, I had to mention only chai-http as a dev dependancy and install them locally in the node-modules for test cases to work.
+However, at the example in https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai, they have mentioned all 3 (Mocha, Chai and Chai-http) as dev dependancies. 
+As per the documentation available at https://github.com/chaijs/chai-http, it seems that there are no methods to deep dive into a response and compare the contents.
+But there are methods like request should have a parameter named 'XYZ', response should be status '200', request/response should have header name 'OOO', response should have html content etc.
+	To deep dive into the a response and compare the contents, use some code like this.
+	Here the content is proper if it has the text "Input Your Chat Name". So, I have written the code for that and it worked. Refer the test code in my github at https://github.com/sujithbabu1971/WebSockets/blob/master/test/requestTest.js 
+
+		    var resString = JSON.stringify(res);
+		    // If the response is correct, the text would be contained in the output html.
+		    var properOutput = resString.includes("Input Your Chat Name");
+		    console.log(properOutput);
+		    assert.equal(properOutput,true);
+
+Caveat from https://github.com/chaijs/chai-http for asynchronous behaviour of chai-http.
+==========================================================================================
+
+Because the end function is passed a callback, assertions are run asynchronously. Therefore, a mechanism must be used to notify the testing framework that the callback has completed. Otherwise, the test will pass before the assertions are checked.
+
+For example, in the Mocha test framework, this is accomplished using the done callback, which signal that the callback has completed, and the assertions can be verified:
+
 Where are the test cases
 ===========================
 By default all js files under test folder of project are considered as test files. When you type mocha at command prompt, they will be run.
-You can also do <mocha filename.js> that runs test cases in the filename.js
+You can also do <mocha filename.js> that runs test cases in the filename.js 
 
 What is Deep-Eql?
 =======================
@@ -651,6 +675,11 @@ For a one time tear down that runs once after all tests have run, use after.
 To run before each test use beforeEach.
 To run after each test use afterEach.
 
+There is no testScope dependancy in Node JS. It is only dev-dependancy in Node JS.
+=================================================================================
+For an example, Mocha, chai and Chai-http are mentioned as devDependencies in the example at https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai . I have also done the same in my sample codes.
+
+
 
 JASMINE
 ================
@@ -659,3 +688,9 @@ Jasmine is a competitor to MOCHA.
 It seems to include only BDD style unlike MOCHA that has support for both BDD and TDD.
 It seems that only Jasmine needs to be installed here unlike MOCHA where we need to install MOCHA and then CHAI as the assertion engine. The assertion engine is possibly included in Jasmine itself.
 https://jasmine.github.io/2.1/introduction.html has all initial details. 
+
+An observation on GIT Hub Commit and Push
+======================================================
+Assume a scenario like this:
+	You commit and before pushing make some more changes and save.
+	Now at the push only the committed version gets pushed to GIT HUB.
