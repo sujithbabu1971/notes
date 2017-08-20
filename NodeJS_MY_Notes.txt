@@ -451,7 +451,7 @@ GULP has many plugins for reactjs, angular js etc https://gulpjs.com/plugins/
 
 
 Install GRUN/GULP in dev dependancy mode
-========================================================================
+=======================================================================
 npm install grunt --save-dev  --> For grunt command. Set path to the bin under <<>Installation_Directory>\node_modules\grunt\bin.
 It is better to install all grunt and gulp related packages with global scope as they are just development dependancies.
 This will install "devDependencies": {
@@ -461,7 +461,10 @@ This will install "devDependencies": {
 Other synatx variations like does not install grunt/gulp as dep dependancy only.
 
 Also install npm install grunt-contrib-cssmin --save-dev --> For minification of css script
-Provide Gruntfile.js / gulpfile.js. (Case sensitive)
+Provide Gruntfile.js / gulpfile.js. (Case sensitive). Remeber it is Small GULP, Big GRUNT
+=======================================================================
+
+
 npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names are shortened.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true in both GRUNT and GULP (I have verified this with hands-on exercise in both GRUNT and GULP).
 
 
@@ -503,8 +506,26 @@ Difference between Grunt-cli and grunt
 =======================================
 cli stands for command line. It seems to install the command, but for it to work correctly grunt also should be installed. This seems to be the difference. The details are available at https://gruntjs.com/getting-started. However, on first reading the difference is not very clear.
 The above mechanism allows GRUNT version to be different for each project. Same is the case for GULP. It seems to insist on using the GRUNT in the local node_modules directory always and not the ones installed globally.
-GULP uses streams
-====================
+
+GULP runs tasks asynchronously. They run independantly. But if you want serial order, it is possible. Read https://github.com/gulpjs/gulp/blob/master/docs/API.md#async-task-support and https://stackoverflow.com/questions/29694425/what-does-gulp-done-method-do
+
+The code will be something like
+	var gulp = require('gulp');
+	// Takes in a callback so the engine knows when it'll be done
+	// This callback is passed in by Gulp - they are not arguments / parameters
+	// for your task.
+	gulp.task('one', function(cb) {
+	    // Do stuff -- async or otherwise
+	    // If err is not null and not undefined, then this task will stop, 
+	    // and note that it failed
+	    cb(err); 
+	});
+	// Identifies a dependent task must be complete before this one begins
+	gulp.task('two', ['one'], function() {
+	    // Task 'one' is done now, this will now run...
+	});
+	gulp.task('default', ['one', 'two']);
+
 
 FS Module in Node JS is similar to IO package in JAVA
 =======================================================
@@ -514,3 +535,127 @@ WATCH in both GRUNT and GULP takes effect only after changing contents. It does 
 ================================================================================================================================================
 May be there are options to change them.
 =========================================================
+
+MOCHA, CHAI and other Testing concepts
+=================================================
+
+Unlike JUnits, the test runners and testing frameworks seem to come from different players here.
+Note that Mocha and Chai are to be installed globally. They need not be mentioned in the package-json as dependancies or dev-dependancies since they are of test scope (like test scope for JUnit in maven).
+npm install -g mocha  --> This will install the mocha command
+npm install -g chai  
+npm install -g chai-http  
+
+Test Runners: KARMA, PROTRACTOR (Not really needed for serer side like Node.JS. Needed for client side like Angular JS or React JS).
+Testing Frameworks: MOCHA, QUNINT(Older one, not that powefrul), JASMIN.
+MOCHA is the best and fastest.
+Assertion engines(Test case Writing tools/styles): SHOULD, Expect.JS, ASSERTION style (Similar to JUnit style). CHAI can mix these styles. Install Chai globally.
+
+	In Mocha(it is a framework), we need to use an assertion engine library like CHAI that allows us to specify an assertion engine like SHould/Assert/Expect. But Jasmine(a competeitor framework to Mocha), this assertion is not needed. However Mocha seems to be more popular
+
+
+Assertion engines (Test case writing styles)
+
+	var expect = require('chai').expect;
+	var assert = require('chai').assert;
+	// Note that here it is should() and not just should.
+	// Whereas for expect and assert styles, it is just assert and expect.
+	var should = require('chai').should();
+CHAI is the style and MOCHA is the testing framework
+
+
+Chai http://chaijs.com/
+Mocha https://mochajs.org/
+
+
+Note that MOCHA seems to be like JUNIt in the sense that it is better to use it for business 
+=============================================================================================
+tier that does not have any session/request/response like objects.
+===================================================================
+In traditional Java/J2EE,we have fixed this issue by using cacus (in Struts) or Mock objects that simulates request/response/web servers. Here the chai-http seems to be for this purpose.
+
+Where are the test cases
+===========================
+By default all js files under test folder of project are considered as test files. When you type mocha at command prompt, they will be run.
+You can also do <mocha filename.js> that runs test cases in the filename.js
+
+What is Deep-Eql?
+=======================
+https://github.com/chaijs/deep-eql
+Deep Eql is a module which you can use to determine if two objects are "deeply" equal - that is, rather than having referential equality (a === b), this module checks an object's keys recursively, until it finds primitives to check for referential equality. 
+
+
+npm --version, mocha --version, gulp --vresion, grunt --version will give you the version numbers
+================================================================
+
+arguments.length  in java script functions
+=============================================
+functions()
+{
+	arguments.length ---> This will give you the length of the arguments passed within functions.
+	Magic of java script !!!! 
+}
+
+In mocha , 'describe' is the syntax for test suite and 'it' is syntaxt for test case.
+========================================================================================
+Note that decsribe and it are not java script methods, they are provided by mocha framework.
+Sample code:
+	describe('tests', function(){
+	// it is syntaxt for test case.
+	it('some tests', function(){
+		
+		var a='a';
+		// Will pass
+		expect(a).to.equal('a');
+		// Will pass
+		assert.equal(a,'a');
+		// Will pass
+		a.should.equal('a');
+		// Will  fail
+		expect(a).to.equal('b');
+		
+		
+		
+	});
+	
+	});
+
+We can have multiple test suites (multiple describes) within a test file. We can have multiple test cases within a test suite (multiple 'it' within a describe). This is excactly similar to Java JUnits. This feature allows us to have a separate test suites for test functionalities. Eg:-- One test suite (describe) for a customer functionality, another one for admin functionality etc.
+
+
+BDD and TDD
+================
+Behaviour Driven Development and Test Driven Development
+
+Refer https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/ for understanding the differences. There is a good example. Also read https://en.wikipedia.org/wiki/Behavior-driven_development
+
+Since I have JUnit exposure, may be I can use Assert style in CHAI. But Assert style is TDD. But it time to advance to BDD. So better learn SHOULD/EXPECT which are BDD styles.
+assert is the only one that is not chainable while should/expect are chainable. (ie;output from one becomes the input to the next).
+Example for chaineable: expect([1, 2, 3]).to.have.lengthOf.below(4)
+Greater than and less than is handled by above and below in should/expect styles.
+
+Refer http://chaijs.com/api/bdd/ for all the available syntax on BDD.Refer http://chaijs.com/api/assert/ for all the available syntax on TDD.
+
+==============================================================================================================================
+The above style seems to be better as we can express test statements in more english like language.
+For an example, in BDD the following works
+expect([1, 2, 3]).to.have.lengthOf.below(4);
+But in TDD (Assert), we need to achieve this in the following way
+	var length = [1, 2, 3].length;
+	Assert.isTrue(length<4);
+So some more code is needed in BDD here and is not all that behaviour driven.
+
+TEAR DOWN , setUp equivalents of JUNIT in MOCHA
+============================================
+For a one time set up that runs once before any test is run, use before.
+For a one time tear down that runs once after all tests have run, use after.
+To run before each test use beforeEach.
+To run after each test use afterEach.
+
+
+JASMINE
+================
+https://jasmine.github.io/2.1/introduction.html
+Jasmine is a competitor to MOCHA.
+It seems to include only BDD style unlike MOCHA that has support for both BDD and TDD.
+It seems that only Jasmine needs to be installed here unlike MOCHA where we need to install MOCHA and then CHAI as the assertion engine. The assertion engine is possibly included in Jasmine itself.
+https://jasmine.github.io/2.1/introduction.html has all initial details. 
