@@ -265,6 +265,7 @@ Node JS Gaps as compared with the established Java/J2EE web based technolgies
 (a) Connection pooling
 (b) How does I18n work ?
 (c) Log levels as in log4j/commons logger. Chalk gives only colour coding to the extendt that I am aware of it. It does not provide file based loggers that we would need for debugging production issues. It does not provide log level based logging as far as I am aware of it.
+(4) JDBC is DB independant in Java. In java, we need the same package in code irrespecive of the database that the code is connecting to. But here it seems that we need to import (require) a different module based on the database that we connect to. It is not abstracted and made DB independant the best of my knowledge.
 
 pre method
 ==================
@@ -694,3 +695,32 @@ An observation on GIT Hub Commit and Push
 Assume a scenario like this:
 	You commit and before pushing make some more changes and save.
 	Now at the push only the committed version gets pushed to GIT HUB.
+
+HAPI
+=========
+Hapi is an equivalent to Express. Unlike express, you need not install NPMs for session, post separately. But template engine like handlebars need to be installed separaley as in the case of express.
+If handlebar is used with express, then install express-handlebar. But if using with HAPi, just do npm install handlebar (generic handlebar installation)
+The equivalent of public in ejs insert
+
+npm install hapi
+npm install handlebar
+npm install inert
+npm install vision (needed for template engines)
+
+MYSQL
+=========
+ npm install mysql
+
+ Handlebars {{ and {{{ 
+ =========================
+ Handlebars HTML-escapes values returned by a {{expression}}. If you don't want Handlebars to escape a value, use the "triple-stash", {{{.
+ http://handlebarsjs.com/#html-escaping
+
+ MYSQL creation in amazon web services
+ =======================================
+ Once you create the mysql db instance in amazon web services by following the regular steps, do the following also.
+ Click on Instance Actions --- > see details --> Click on Security Group default ---> Click on Inbound tab --> edit --> Make Source as 'Anywhere'
+ This would allow you to connect to the database from anywhere in the internet.
+
+ Dowload the mysql workbench (This is the mysql client). This is similar to the 
+
