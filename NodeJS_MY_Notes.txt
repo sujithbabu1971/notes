@@ -264,7 +264,7 @@ Node JS Gaps as compared with the established Java/J2EE web based technolgies
 ==============================================================================
 (a) Connection pooling
 (b) How does I18n work ?
-(c) Log levels as in log4j/commons logger. Chalk gives only colour coding to the extendt that I am aware of it. It does not provide file based loggers that we would need for debugging production issues. It does not provide log level based logging as far as I am aware of it.
+(c) Log levels as in log4j/commons logger. Chalk gives only colour coding to the extendt that I am aware of it. It does not provide file based loggers that we would need for debugging production issues. It does not provide log level based logging as far as I am aware of it.   ====> Update on 23rd Aug 2017. May be Morgan is the answer. Refer https://www.npmjs.com/package/morgan . It has got file writing, log file rotation. It also has something similar to log levels with more or less output logging based on what we have configured. But this seems to be limited to request logging.
 (4) JDBC is DB independant in Java. In java, we need the same package in code irrespecive of the database that the code is connecting to. But here it seems that we need to import (require) a different module based on the database that we connect to. It is not abstracted and made DB independant the best of my knowledge.
 
 pre method
@@ -363,6 +363,8 @@ STATIC middleware details
 app.use(exp.static(__dirname+ "/public"));
 
 By default the index.html is the index file. So / will match this index.html
+
+My sample summer note (a WYWWYG editor) is at https://github.com/sujithbabu1971/ExpressJSSamples/tree/master/public (summernote.html)
 Web Sockets good material
 ===============================
 https://os.alfajango.com/websockets-slides/#/
@@ -700,11 +702,11 @@ HAPI
 =========
 Hapi is an equivalent to Express. Unlike express, you need not install NPMs for session, post separately. But template engine like handlebars need to be installed separaley as in the case of express.
 If handlebar is used with express, then install express-handlebar. But if using with HAPi, just do npm install handlebar (generic handlebar installation)
-The equivalent of public in ejs insert
+The equivalent to public in ejs is insert in HAPI
 
 npm install hapi
 npm install handlebar
-npm install inert
+npm install inert (equivalent to public )
 npm install vision (needed for template engines)
 
 MYSQL
@@ -726,7 +728,9 @@ MYSQL
  
  METEOR
  ==========
-Meteor is an all inclusive framework. In MEAN, we have different components such as Mongodb as the database, express JS as the server side template engine and framework, angular JS in the front end, Node JS as the backend programming language. But in METOR it is all integrated. It apparenty has even buid tool, unit tests included. The philosophy is take everything. There is no plug and play. MongodDB is also included within. MongDB can be accessed within the front-end unlike the regular MEAN stack. 
+Meteor is an all inclusive framework that is dependant on Node JS.
+Obviously node JS needs to be installed before installing METEOR.
+In MEAN, we have different components such as Mongodb as the database, express JS as the server side template engine and framework, angular JS in the front end, Node JS as the backend programming language. But in METOR it is all integrated. It apparenty has even buid tool, unit tests included. The philosophy is take everything. There is no plug and play. MongodDB is also included within. MongDB can be accessed within the front-end unlike the regular MEAN stack. 
 Think agCarbon v/s agLite
 
 https://wiki.dandascalescu.com/essays/why_meteor
@@ -776,3 +780,10 @@ MongoDB is by its nature more resistant against database injections than SQL bec
  Metor gets deplyed to meteor.com
  ==================================
  May be there are ways of changing that. (Otherwise, on-premise installation may not be possible). When the local app is deployed to meotor, only the app gets installed and not the data. This is the intended and correct behaviour also.
+
+If you have to develop only REST APIs, do not use METEOR. (Source: https://wiki.dandascalescu.com/essays/why_meteor)
+================================================================
+When all you want is to build a web-service / REST API, without a client. In that case, a Sails.js or Hapi might be sufficient, while Meteor could be overkill. In my(Sujith's) opinion, plain express with EJS will be enough here. Even HAPI (replacement for express) might not be required.
+
+jswebtoken
+================
