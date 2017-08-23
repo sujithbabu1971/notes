@@ -722,5 +722,57 @@ MYSQL
  Click on Instance Actions --- > see details --> Click on Security Group default ---> Click on Inbound tab --> edit --> Make Source as 'Anywhere'
  This would allow you to connect to the database from anywhere in the internet.
 
- Dowload the mysql workbench (This is the mysql client). This is similar to the 
+ Dowload the mysql workbench (This is the mysql client). This is similar to the sql developer.
+ 
+ METEOR
+ ==========
+Meteor is an all inclusive framework. In MEAN, we have different components such as Mongodb as the database, express JS as the server side template engine and framework, angular JS in the front end, Node JS as the backend programming language. But in METOR it is all integrated. It apparenty has even buid tool, unit tests included. The philosophy is take everything. There is no plug and play. MongodDB is also included within. MongDB can be accessed within the front-end unlike the regular MEAN stack. 
+Think agCarbon v/s agLite
 
+https://wiki.dandascalescu.com/essays/why_meteor
+There is no NPM installation here.
+The logic is something like
+
+	if(Metoer.isClient) {
+		// Write all the client code
+	}
+
+	if(Metoer.isServer) {
+		// Write all the server code
+	}
+
+So, in a single file you have all the code.
+It uses a trimmed down version of handleBars called spaceBars. (No separate installable needed).
+
+Server Push (websockets) is installed by default in Meteor. The moment you change somecode and save it, it will be reflected in all the connected browsers. This is enabled even if you do not write code for that.
+Thus it is real time and two-way. 
+The learning curve seems to be small.
+There seems to be a lot of community support.
+Disadvantages of METEOR:
+(a) No plug and play allowed. You can not plug your component.
+(b) Obviously against open source priciples of sharing. (Think agCarbon v/s agLite)
+(c) Since it is duplex, a live connection is held between browser(client) and server. This connection is kept in memory for all connected memories. In usual http connection, it is single sided and as soon as a request is served, the request thread goes back to the request thread pool and memory is not used. But here it is not like that.
+
+If you are using angular JS for everything , then may be you do not need templating engine. However this may not be the case in a realistic project , especially the one that has a lot of security requirements. You will end up using a lot of templating code since you will need a lot more data from the server.
+
+There seems to be a METEOR cloud also.
+The file name of html and css are the same (except for the file extension). Thus html would be able to locate the css file without having to look for css using the head and link tags.
+The template code is in the same file in Metor.
+In meteor, you can use the Mongo API on the client. You've never seen this before. Up until this point in history, database APIs only worked on the server. But in Meteor, there isn't a server API and a client API. There's just the Meteor platform API. And it works everywhere.
+
+Meteor supports three view engines: React, Angular, and its own Blaze.
+
+MongoDB is by its nature more resistant against database injections than SQL because it doesn't parse inputs. But MongoDB can also be hacked.
+========================================================================================================================================================
+(Source: https://wiki.dandascalescu.com/essays/why_meteor)
+
+ Node is notoriously scalable
+ ===========================
+ - 1 million concurrent connections laughs at C10K and in raw terms, Node is faster than PHP. PayPal rewrote with Node.js their account overview page, one of the most trafficked apps on the website and formerly written in Java. (Source: https://wiki.dandascalescu.com/essays/why_meteor)
+
+ Model–view–viewmodel (MVVM) is a software architectural pattern.
+ ==================================================================
+
+ Metor gets deplyed to meteor.com
+ ==================================
+ May be there are ways of changing that. (Otherwise, on-premise installation may not be possible). When the local app is deployed to meotor, only the app gets installed and not the data. This is the intended and correct behaviour also.
