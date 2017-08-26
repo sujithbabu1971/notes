@@ -841,5 +841,45 @@ console.log(token);
 var decoded = jwt.verify(token, secretKey);
 console.log(decoded);
 
-Load balancing is done without any extra load balancer (apache web server/ hardware load balacer etc) in Nod JS
+Load balancing is done without any extra load balancer (apache web server/ hardware load balacer etc) in Node JS
 ============================================================================================================================
+For that, some code like this will help. Refer https://nodejs.org/dist/latest-v6.x/docs/api/cluster.html 
+
+	const cluster = require('cluster');
+	const http = require('http');
+	const numCPUs = require('os').cpus().length;
+
+	if (cluster.isMaster) {
+	  console.log(`Master ${process.pid} is running`);
+
+	  // Fork workers.
+	  for (let i = 0; i < numCPUs; i++) {
+	    cluster.fork();
+	  }
+
+But we will need to have sticky session or session failover.
+
+Sticky Session --> https://stackoverflow.com/questions/23991413/how-to-use-sticky-session-with-cluster-in-express-node-js  
+
+	Some code like this will work.
+
+	var http = require('http');
+	var cluster = require('cluster'); // Only required if you want the worker id
+	var sticky = require('sticky-session');
+	var express = require('express');
+	var app = express();
+
+	app.get('/', function (req, res) {
+	    console.log('worker: ' + cluster.worker.id);
+	    res.send('Hello World!');
+	});
+
+	var server = http.createServer(app);
+	sticky.listen(server,3000);
+
+Session failover using DB (Similar to what we do in weblogic where we store session data in database) ---> https://stackoverflow.com/questions/17626279/nodejs-clustering-and-expressjs-sessions  https://stackoverflow.com/questions/17600272/session-undefined-using-connect-redis-expressjs-node/17606825#17606825
+
+process.argv
+=================
+This is similar to the args in main. But by default agv[0] is node.exe and agv[1] is the filename.js
+The actual arguments start from argv[2].
