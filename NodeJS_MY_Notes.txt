@@ -883,3 +883,50 @@ process.argv
 =================
 This is similar to the args in main. But by default agv[0] is node.exe and agv[1] is the filename.js
 The actual arguments start from argv[2].
+
+child_process
+================
+Read https://nodejs.org/dist/latest-v6.x/docs/api/child_process.html#child_process_spawning_bat_and_cmd_files_on_windows
+
+The following spawns server.js
+
+
+	var spawn = require('child_process').spawn;
+	var child = spawn ('node ./server.js);
+
+	var express = require('express');
+	var app = express();
+
+	app.get("/", function (req, res) {
+		res.end("Hello World");
+
+	}
+
+Master process and child process interaction
+================================================
+You can intechange data between master process and its child process using the on event handler and using send method
+The events are  'close', 'disconnect', 'error', 'exit' and  'message'.
+My sample program is available at https://github.com/sujithbabu1971/mongodbprograms/
+(Refer mainProcessWithSubInteraction.js and subProcess.js in the above link).
+Refer the document at 
+https://nodejs.org/dist/latest-v6.x/docs/api/child_process.html
+It says the below.
+	When an IPC channel has been established between the parent and child ( i.e. when using child_process.fork()), the child.send() method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the process.on('message') event.
+
+	For example, in the parent script:
+
+	const cp = require('child_process');
+	const n = cp.fork(`${__dirname}/sub.js`);
+
+	n.on('message', (m) => {
+	  console.log('PARENT got message:', m);
+	});
+
+	n.send({ hello: 'world' });
+	And then the child script, 'sub.js' might look like this:
+
+	process.on('message', (m) => {
+	  console.log('CHILD got message:', m);
+	});
+
+	process.send({ foo: 'bar' });
