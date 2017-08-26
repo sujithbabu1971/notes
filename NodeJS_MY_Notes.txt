@@ -265,6 +265,7 @@ Node JS Gaps as compared with the established Java/J2EE web based technolgies
 (a) Connection pooling
 (b) How does I18n work ?
 (c) Log levels as in log4j/commons logger. Chalk gives only colour coding to the extendt that I am aware of it. It does not provide file based loggers that we would need for debugging production issues. It does not provide log level based logging as far as I am aware of it.   ====> Update on 23rd Aug 2017. May be Morgan is the answer. Refer https://www.npmjs.com/package/morgan . It has got file writing, log file rotation. It also has something similar to log levels with more or less output logging based on what we have configured. But this seems to be limited to request logging.
+Another request logger is express logger. https://gist.github.com/leommoore/7524073
 (4) JDBC is DB independant in Java. In java, we need the same package in code irrespecive of the database that the code is connecting to. But here it seems that we need to import (require) a different module based on the database that we connect to. It is not abstracted and made DB independant the best of my knowledge.
 
 pre method
@@ -788,7 +789,7 @@ When all you want is to build a web-service / REST API, without a client. In tha
 jsonwebtoken
 ================
 https://www.npmjs.com/package/jsonwebtoken
-Its use is si,ilar to the CSRF (Cross site request forgery) guard servlet that we had used. (https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF))  
+Its use is similar to the CSRF (Cross site request forgery) guard servlet that we had used. (https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF))  
 
 Sample code
 ===============
@@ -930,3 +931,6 @@ It says the below.
 	});
 
 	process.send({ foo: 'bar' });
+Passport (Similar to OAUTH concept)
+=======================================
+Module 7. Actual class under 'Course Content' tab. Go through the 100th and 144th minute. This has all the details on passport.
