@@ -1030,3 +1030,7 @@ Now Authenticate Requests
 	  function(req, res) {
 	    res.redirect('/');
 	  });
+
+Model–view–viewmodel (MVVM) is a software architectural pattern.
+=================================================================
+https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel
