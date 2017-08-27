@@ -931,6 +931,102 @@ It says the below.
 	});
 
 	process.send({ foo: 'bar' });
-Passport (Similar to OAUTH concept)
+
+
+OAuth 
+======
+OAuth is a big specification.
+A good OAuth tutorial can be found at http://tutorials.jenkov.com/oauth2/index.html
+For facebook it is https://developers.facebook.com/docs/facebook-login/access-tokens
+
+In terms of code, it would be something like the below for an overtly simple scenario.
+Step 1:--
+	Get the user access token by making a call like the below
+	GET /oauth/access_token
+    ?client_id={app-id}
+    &client_secret={app-secret}
+    &grant_type=client_credentials
+Step 2:--
+	Call the app server URL with the user access tokem from above.
+
+The above is a simple scenario. It would get complex, when we have page access tokens, page permissions etc. But that would be a realistic scenario. For details, google OAUTh 2.0 sequence diagrams and the link https://developers.facebook.com/docs/facebook-login/access-tokens
+F
+
+
+connect-flash module
+======================
+https://www.npmjs.com/package/connect-flash
+The flash is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user. The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.
+
+This middleware was extracted from Express 2.x, after Express 3.x removed direct support for the flash. connect-flash brings this functionality back to Express 3.x, as well as any other middleware-compatible framework or application. +1 for radical reusability.
+
+
+var flash = require('connect-flash');
+var app = express();
+ 
+app.configure(function() {
+  app.use(express.cookieParser('keyboard cat'));
+  app.use(express.session({ cookie: { maxAge: 60000 }}));
+  app.use(flash());
+});
+With the flash middleware in place, all requests will have a req.flash() function that can be used for flash messages.
+
+app.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash(). 
+  req.flash('info', 'Flash is back!')
+  res.redirect('/');
+});
+ 
+app.get('/', function(req, res){
+  // Get an array of flash messages by passing the key to req.flash() 
+  res.render('index', { messages: req.flash('info') });
+});
+PASSPORT (Similar to OAUTH concept)
 =======================================
 Module 7. Actual class under 'Course Content' tab. Go through the 100th and 144th minute. This has all the details on passport.
+
+PASSPORT is very important authentication and authorization principle in Node JS
+https://www.npmjs.com/package/passport
+http://passportjs.org/
+First select your login strategy (local strategy, facebook strategy etc). There are around 300 strategies. Refer the above links for details and tutorials. For an example the tutorial for local strategy in express 4 is available at http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.WaKI5igjHIU
+Local strategy is like the below:
+	passport.use(new LocalStrategy(
+	  function(username, password, done) {
+	    User.findOne({ username: username }, function (err, user) {
+	      if (err) { return done(err); }
+	      if (!user) { return done(null, false); }
+	      if (!user.verifyPassword(password)) { return done(null, false); }
+	      return done(null, user);
+	    });
+	  }
+	));
+Then provide code for serializing/ deserializing users
+
+	passport.serializeUser(function(user, done) {
+	  done(null, user.id);
+	});
+	 
+	passport.deserializeUser(function(id, done) {
+	  User.findById(id, function (err, user) {
+	    done(err, user);
+	  });
+	});
+Initialize the middleware
+	Middleware
+	To use Passport in an Express or Connect-based application, configure it with the required passport.initialize() middleware. If your application uses persistent login sessions (recommended, but not required), passport.session() middleware must also be used.
+
+	var app = express();
+	app.use(require('serve-static')(__dirname + '/../../public'));
+	app.use(require('cookie-parser')());
+	app.use(require('body-parser').urlencoded({ extended: true }));
+	app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+	app.use(passport.initialize());
+	app.use(passport.session());
+Now Authenticate Requests
+	Passport provides an authenticate() function, which is used as route middleware to authenticate requests.
+
+	app.post('/login', 
+	  passport.authenticate('local', { failureRedirect: '/login' }),
+	  function(req, res) {
+	    res.redirect('/');
+	  });
