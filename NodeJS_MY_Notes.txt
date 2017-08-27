@@ -1034,3 +1034,24 @@ Now Authenticate Requests
 Model–view–viewmodel (MVVM) is a software architectural pattern.
 =================================================================
 https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel
+
+bower
+===========
+npm is the package manager for the server side.
+The one for the client side is bower
+
+https://bower.io/
+First install bower through npm command globally
+For that use "npm install -g bower"
+
+"bower install <package>" will create a folder <bower_components\package at the current folder and put all the client side files (js etc) in that folder
+For an example "bower install angular" will create a folder <bower_components\angular at the current folder and put all the client side files related to angularjs in that folder.
+Now in your client html page, you can do 
+	<script src="bower_components/angular/angular.min/js"> rather than giving <script src="http://XXX/YYY/WHAT_EVER/angular.min/js">
+Infact "npm install angular" would also install angular similar to "bower install angular". But they will all be installed under node_modules as is usual with npm command. You need to copy the required js files to a client folder in your web application. This is avoided using the bower components. 
+
+angular.module('main_module', ['dependancy_module_1','dependancy_module_2']);
+==============================================================================
+
+Revise spring singleton instance, multiple instance , ways of injecting them, ways of injecting singleton to multiple, multiple to singleton etc
+============================================================================================================================================================
