@@ -205,8 +205,9 @@ Native MongoDB Driver v/s Mongoose driver
  The advantage of Mongoose is that it is similar to an RDBMS driver. So programmers could be more familiar with it. It has SQL like syntax. Also, mongoose is better suited for fixed coulmns collections. Helps in validating the data. To do al these, we will need to write your own code in natoive mongod db. But it is provided out of the box in MongoDB.
  Mongoose allows you to define a schema (basically your collection structure ie; table definition).
 
- Mongoose API
+ Mongoose & Mongoose API
  ==============
+ Mongoose applies schemas. It is no longer free sructure. With Mongoose, it has structure and rules (ie; schema). Mongoose is similar to ORM (Object Relation Model) in Java.
  The API is available at http://mongoosejs.com/docs/api.html
  It is not well organized. Read it carefully along with sample programs to understand fully well.
 
@@ -313,6 +314,8 @@ The details are available in the mongoose API at
 http://mongoosejs.com/docs/api.html#schema_Schema
 A typical use would be to hash a password before saving it. Code sample is available in the db.js of leave-the-marks-master project in the Day 5 code.
 
+
+
 MongoLabs (MLabs), MongoImport and MongoExport
 =========================================
 MLabs URL to login ---> https://mlab.com/login/
@@ -376,7 +379,7 @@ connection and disconnect are the events in Socket.io
 Sockets.io ---> How to create separate rooms for chats
 ==========================================================
 Use Namespaces for the same.
-Socket.IO allows you to ìnamespaceî your sockets, which essentially means assigning different endpoints or paths.
+Socket.IO allows you to ‚Äúnamespace‚Äù your sockets, which essentially means assigning different endpoints or paths.
 Refer the API https://socket.io/docs/rooms-and-namespaces/ for that. It has join method. There does not seem to be any explicit leave method as disconnect event seems to be enough.
 
 Events in node.js
@@ -775,7 +778,7 @@ MongoDB is by its nature more resistant against database injections than SQL bec
  ===========================
  - 1 million concurrent connections laughs at C10K and in raw terms, Node is faster than PHP. PayPal rewrote with Node.js their account overview page, one of the most trafficked apps on the website and formerly written in Java. (Source: https://wiki.dandascalescu.com/essays/why_meteor)
 
- Modelñviewñviewmodel (MVVM) is a software architectural pattern.
+ Model‚Äìview‚Äìviewmodel (MVVM) is a software architectural pattern.
  ==================================================================
 
  Metor gets deplyed to meteor.com
@@ -1031,7 +1034,7 @@ Now Authenticate Requests
 	    res.redirect('/');
 	  });
 
-Modelñviewñviewmodel (MVVM) is a software architectural pattern.
+Model‚Äìview‚Äìviewmodel (MVVM) is a software architectural pattern.
 =================================================================
 https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel
 
@@ -1055,3 +1058,44 @@ angular.module('main_module', ['dependancy_module_1','dependancy_module_2']);
 
 Revise spring singleton instance, multiple instance , ways of injecting them, ways of injecting singleton to multiple, multiple to singleton etc
 ============================================================================================================================================================
+
+JavaScript encapsulation available in Day 8 of actual class between 66th and 67th minute
+
+
+JavaScript Array splice() Method
+===============================
+‚ùÆ JavaScript Array Reference
+
+Example
+Add items to the array:
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+The result of fruits will be:
+
+Banana,Orange,Lemon,Kiwi,Apple,Mango
+Try it Yourself ¬ª
+More "Try it Yourself" examples below.
+
+
+Parameter Values
+Parameter	Description
+index	Required. An integer that specifies at what position to add/remove items, Use negative values to specify the position from the end of the array
+howmany	Optional. The number of items to be removed. If set to 0, no items will be removed
+item1, ..., itemX	Optional. The new item(s) to be added to the array
+
+Every object is node js has event handling capabilities (In java, it is only for those objects implementing EventListener interface)
+===============================================================================================================================================================
+
+LAMP v/s MEAN
+================
+Linux, Apache, MySQL and PHP v/s MongoDB, Express JS, Angular JS and Node JS
+Iconic Framework
+=====================
+https://ionicframework.com/ 
+Ionic is the only mobile app stack that enables web developers apps for all major app stores and the mobile web with a single code base.
+
+You write code in HTML5 and Java script. You buid using Cordova / Phonegap. It will work for IoS, Android, Windows and Balckberry phones.
+IoS
+=====
+IoS applications can be developed using SWIFT also apart from by the usage of Objective C.
