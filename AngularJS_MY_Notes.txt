@@ -1,0 +1,7 @@
+Angular 4.0 Installation
+===================
+npm install -g @angular/cli --> Will install cli client for angular
+ng new product-name --> Will create all the necessary artifacts in the directory roduct-name
+ng serve --> This will convert all the typescripts into java scripts and bring up the server at http://localhost:4200/
+
+
