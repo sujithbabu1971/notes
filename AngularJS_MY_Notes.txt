@@ -1,7 +1,12 @@
 Angular 4.0 Installation
 ===================
 npm install -g @angular/cli --> Will install cli client for angular
+npm install -g typescript
+npm install -g tsd --> Will install cli client for angular (try tsd -v)
 ng new product-name --> Will create all the necessary artifacts in the directory roduct-name
 ng serve --> This will convert all the typescripts into java scripts and bring up the server at http://localhost:4200/
 
+
+
+follow instructions in the document 336_typescript_installation_instructions_1.1.pdf at https://github.com/sujithbabu1971/notes/
 
