@@ -1120,3 +1120,15 @@ resource. OAuth 2.0 defines four grant types:
 For each, it behaves differently. But with authorization code, the general flow would be a user access http://flicer.com/someData. The client (here flicker.com) sends a clientId and redirection url (http://flicer.com/A) to facebook (the autentication server). Then facebook responds with an authorisation code. The authorization code is attached to the redirection URL (http://flicer.com/A?auth_code=xyx). Now flicker.com requests facebook for access token. For this, flikcer.com would conatct www.facebook.com/login and would pass the redirection URL (http://flicer.com/A?auth_code=xyx) as a param. Facebook.com now logins the user and also matches that the redirection URL and the auth code in http://flicer.com/A?auth_code=xyx is the same as that it received in the 1st step. If okay then facebook sends back the access code and refresh access code optionally (for offline) .  Now the client sends the actual request to http://flicer.com/someData by adding the access/refresh access token as a header to the request. The client gets the actual data and shows that to the user.
 
 Look at https://www.ibm.com/developerworks/security/library/se-oauthjavapt3/se-oauthjavapt3-pdf.pdf for more details
+
+
+(1) Heap memory is used by all the parts of the application whereas stack memory is used only by one thread of execution.
+(2) Whenever an object is created, it’s always stored in the Heap space and stack memory contains the reference to it. Stack memory only contains local primitive variables and reference variables to objects in heap space.
+(3) Objects stored in the heap are globally accessible whereas stack memory can’t be accessed by other threads.
+(4) Memory management in stack is done in LIFO manner whereas it’s more complex in Heap memory because it’s used globally. Heap memory is divided into Young-Generation, Old-Generation etc, more details at Java Garbage Collection.
+(5) Stack memory is short-lived whereas heap memory lives from the start till the end of application execution.
+(6) We can use -Xms and -Xmx JVM option to define the startup size and maximum size of heap memory. We can use -Xss to define the stack memory size.
+(7) When stack memory is full, Java runtime throws java.lang.StackOverFlowError whereas if heap memory is full, it throws java.lang.OutOfMemoryError: Java Heap Space error.
+(8) Stack memory size is very less when compared to Heap memory. Because of simplicity in memory allocation (LIFO), stack memory is very fast when compared to heap memory.
+
+
