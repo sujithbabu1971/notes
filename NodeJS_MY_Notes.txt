@@ -63,6 +63,8 @@ Then cd to myapp directory
 npm install ---> this will install all dependancies
 npm start --> default start command in package.json. This has the start scripts in the ./bin/www folder that was created by express command.
 
+EJS ===> embedded java script templates
+
 YSLOW
 =====================
 
@@ -91,6 +93,7 @@ If you use
 i=10; inside a function, then i is a global varaibale and not limited to that function. Avoid this to ensure the variables are not conflicting.
 So use 
 var i=10;
+Or use let i= 10; // let has access within the for loop/function etc.
 
 
 Debugging node js applications
@@ -100,7 +103,7 @@ Install nodeclipse. This installation is one where you open an eclipse empty wor
 After the installation, create/import project as Node.js Express project. 
 Right click on the starting file (not the project directory) and select the 1st option (Node appication). Do not select the second option (Node.js application)
 This will start the application on the default debug port of 5858.
-After that the debugging, variable expressions are as in the case of Java (Not as user friendly since some of the options that we are used with java debugging may not work here.). To set the breakpoint left click on the  margin (not right click on margin as I am used to in java eclipse debugging).
+After that the debugging, variable expressions are as in the case of Java (Not as user friendly since some of the options that we are used to in java debugging may not work here.). To set the breakpoint left click on the  margin (not right click on margin as I am used to in java eclipse debugging).
 How to debug video is available at http://www.nodeclipse.org/usage
 Good MongoDB material
 =======================
@@ -203,7 +206,7 @@ What options can be used in find (query) are available at https://mongodb.github
 Native MongoDB Driver v/s Mongoose driver
 ===========================================
  MongoDB Driver is more powerful. 
- The advantage of Mongoose is that it is similar to an RDBMS driver. So programmers could be more familiar with it. It has SQL like syntax. Also, mongoose is better suited for fixed coulmns collections. Helps in validating the data. To do al these, we will need to write your own code in natoive mongod db. But it is provided out of the box in MongoDB.
+ The advantage of Mongoose is that it is similar to an RDBMS driver. So programmers could be more familiar with it. It has SQL like syntax. Also, mongoose is better suited for fixed coulmns collections. Helps in validating the data. To do al these, we will need to write your own code in native mongod db. But it is provided out of the box in MongoDB.
  Mongoose allows you to define a schema (basically your collection structure ie; table definition).
 
  Mongoose & Mongoose API
@@ -238,7 +241,7 @@ Also explored webdav (It uses HTTP PUT)
 ETL v/s ESB
 ==============
 ETL ---> Talend, Pentaho. Talend also have esb capabilties.
-ESB ------> WSO2. Apache synapse, Apache camel, Apache ServiceMix, MULE
+ESB ------> WSO2. Apache synapse, Apache camel, Apache ServiceMix, MULE Soft.
 Apache ServiceMix is based on Apache Camel.
 WSO2's esb engine is Apache synapse.
 
@@ -473,7 +476,7 @@ Provide Gruntfile.js / gulpfile.js. (Case sensitive). Remeber it is Small GULP, 
 =======================================================================
 
 
-npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names are shortened.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true in both GRUNT and GULP (I have verified this with hands-on exercise in both GRUNT and GULP).
+npm install grunt-contrib-uglify --save-dev  --> For minification of java script. This also does code mangling. (Same thing that we used in applet code long time back whereby variable names were mangled.). To avoid the mangling so that we can read the code better, use mangle:false. By default mangle is true in both GRUNT and GULP (I have verified this with hands-on exercise in both GRUNT and GULP).
 
 
 Also install npm install grunt-contrib-watch --save-dev ---> This is to ensure minification after each edit without having to run the grunt minify task again.
@@ -503,11 +506,10 @@ Browser can download only two files at a time
 
 GRUNT is more like a configuration language. But GULP is an asynchronous node js code.
 ========================================================================================
-Linting is a generic term for finding out issues in code. Refer https://en.wikipedia.org/wiki/Lint_%28software%29 . But in java script terminology, it seems to mean verifying potential syntax error during build stage itself since otherwise an intrepreted language like java script will check it only at the runtime.
+Linting is a generic term for finding out issues in code. Refer https://en.wikipedia.org/wiki/Lint_%28software%29 . But in java script terminology, it seems to mean verifying potential syntax error during build stage itself since otherwise an intrepreted language like java script will check synatx errors only at the runtime.
 
 To update npm itelf
 ======================
-To update npm itelf use
 npm update -g npm
 
 Difference between Grunt-cli and grunt
@@ -659,7 +661,8 @@ BDD and TDD
 Behaviour Driven Development and Test Driven Development
 
 Refer https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/ for understanding the differences. There is a good example. Also read https://en.wikipedia.org/wiki/Behavior-driven_development
-
+BDD in java --> Cucumber. Selenium is automated request side testing.
+BDD using SELENIUM allows feature file that buiness analysts can use easily to decsribe testing.
 Since I have JUnit exposure, may be I can use Assert style in CHAI. But Assert style is TDD. But it time to advance to BDD. So better learn SHOULD/EXPECT which are BDD styles.
 assert is the only one that is not chainable while should/expect are chainable. (ie;output from one becomes the input to the next).
 Example for chaineable: expect([1, 2, 3]).to.have.lengthOf.below(4)
@@ -674,7 +677,7 @@ expect([1, 2, 3]).to.have.lengthOf.below(4);
 But in TDD (Assert), we need to achieve this in the following way
 	var length = [1, 2, 3].length;
 	Assert.isTrue(length<4);
-So some more code is needed in BDD here and is not all that behaviour driven.
+So some more code is needed in TDD here and is not all that behaviour driven.
 
 TEAR DOWN , setUp equivalents of JUNIT in MOCHA
 ============================================
@@ -694,7 +697,7 @@ JASMINE
 https://jasmine.github.io/2.1/introduction.html
 Jasmine is a competitor to MOCHA.
 It seems to include only BDD style unlike MOCHA that has support for both BDD and TDD.
-It seems that only Jasmine needs to be installed here unlike MOCHA where we need to install MOCHA and then CHAI as the assertion engine. The assertion engine is possibly included in Jasmine itself.
+It seems that only Jasmine needs to be installed here unlike MOCHA where we need to install MOCHA and then install CHAI as the assertion engine. The assertion engine is possibly included in Jasmine itself.
 https://jasmine.github.io/2.1/introduction.html has all initial details. 
 
 An observation on GIT Hub Commit and Push
@@ -760,7 +763,7 @@ There seems to be a lot of community support.
 Disadvantages of METEOR:
 (a) No plug and play allowed. You can not plug your component.
 (b) Obviously against open source priciples of sharing. (Think agCarbon v/s agLite)
-(c) Since it is duplex, a live connection is held between browser(client) and server. This connection is kept in memory for all connected memories. In usual http connection, it is single sided and as soon as a request is served, the request thread goes back to the request thread pool and memory is not used. But here it is not like that.
+(c) Since it is duplex, a live connection is held between browser(client) and server. This connection is kept in memory for all connected memories. In usual http connection, it is single sided and as soon as a request is served, the request thread goes back to the request thread pool and memory is not used. But here it is not like that and therfore resource intensive.
 
 If you are using angular JS for everything , then may be you do not need templating engine. However this may not be the case in a realistic project , especially the one that has a lot of security requirements. You will end up using a lot of templating code since you will need a lot more data from the server.
 
@@ -782,7 +785,7 @@ MongoDB is by its nature more resistant against database injections than SQL bec
  Model–view–viewmodel (MVVM) is a software architectural pattern.
  ==================================================================
 
- Metor gets deplyed to meteor.com
+ Metor gets deployed to meteor.com
  ==================================
  May be there are ways of changing that. (Otherwise, on-premise installation may not be possible). When the local app is deployed to meotor, only the app gets installed and not the data. This is the intended and correct behaviour also.
 
@@ -814,7 +817,7 @@ var token = jwt.sign({
 console.log(token);
 // Now pass it to the page using params. Include that in the page as a hidden param
 // It can be set as a header also
-// Now in the app.use do this
+// Now in the app.use, do the following
 // We will need to add a new middleware. This would be similar to servlet filters
 
 // The code would be something like
@@ -830,7 +833,7 @@ console.log(token);
 			}else{
 				// everything is fine.
 				// call next(). That will forward to the intended page;
-				// decoded will have the value data: 'foobar' or whatever is encrypted first
+				// decoded will have the value data: 'foobar' or whatever is encrypted earlier
 				next();
 			}
 			   
@@ -851,7 +854,6 @@ Load balancing is done without any extra load balancer (apache web server/ hardw
 For that, some code like this will help. Refer https://nodejs.org/dist/latest-v6.x/docs/api/cluster.html 
 
 	const cluster = require('cluster');
-	const http = require('http');
 	const numCPUs = require('os').cpus().length;
 
 	if (cluster.isMaster) {
@@ -1052,7 +1054,7 @@ For that use "npm install -g bower"
 For an example "bower install angular" will create a folder <bower_components\angular at the current folder and put all the client side files related to angularjs in that folder.
 Now in your client html page, you can do 
 	<script src="bower_components/angular/angular.min/js"> rather than giving <script src="http://XXX/YYY/WHAT_EVER/angular.min/js">
-Infact "npm install angular" would also install angular similar to "bower install angular". But they will all be installed under node_modules as is usual with npm command. You need to copy the required js files to a client folder in your web application. This is avoided using the bower components. 
+Infact "npm install angular" would also install angular similar to "bower install angular". But they will all be installed under node_modules as is usual with npm command. You need to copy the required js files to a client folder in your web application. This is avoided using the bower command/components. 
 
 angular.module('main_module', ['dependancy_module_1','dependancy_module_2']);
 ==============================================================================
@@ -1117,7 +1119,9 @@ resource. OAuth 2.0 defines four grant types:
 3. Resource owner password credentials
 4. Client credentials
 
-For each, it behaves differently. But with authorization code, the general flow would be a user access http://flicer.com/someData. The client (here flicker.com) sends a clientId and redirection url (http://flicer.com/A) to facebook (the autentication server). Then facebook responds with an authorisation code. The authorization code is attached to the redirection URL (http://flicer.com/A?auth_code=xyx). Now flicker.com requests facebook for access token. For this, flikcer.com would conatct www.facebook.com/login and would pass the redirection URL (http://flicer.com/A?auth_code=xyx) as a param. Facebook.com now logins the user and also matches that the redirection URL and the auth code in http://flicer.com/A?auth_code=xyx is the same as that it received in the 1st step. If okay then facebook sends back the access code and refresh access code optionally (for offline) .  Now the client sends the actual request to http://flicer.com/someData by adding the access/refresh access token as a header to the request. The client gets the actual data and shows that to the user.
+For each, it behaves differently. But with authorization code, the general flow would be like the following: a user access http://flicer.com/someData. The client (here flicker.com) sends a clientId and redirection url (http://flicer.com/A) to facebook (the autentication server). Then facebook responds with an authorisation code. The authorization code is attached to the redirection URL (http://flicer.com/A?auth_code=xyx). Now flicker.com requests facebook for access token. For this, flikcer.com would conatct www.facebook.com/login and would pass the redirection URL (http://flicer.com/A?auth_code=xyx) as a param. Facebook.com now logins the user and also matches that the redirection URL and the auth code in http://flicer.com/A?auth_code=xyx is the same as that it received in the 1st step. If okay then facebook sends back the access code and refresh access code optionally (for offline) .  Now the client sends the actual request to http://flicer.com/someData by adding the access/refresh access token as a header to the request. The client gets the actual data and shows that to the user.
+
+AUTHORIZATION CODE and ACCESS/REFRESH ACCESS TOKEN are the main terms here.
 
 Look at https://www.ibm.com/developerworks/security/library/se-oauthjavapt3/se-oauthjavapt3-pdf.pdf for more details
 
