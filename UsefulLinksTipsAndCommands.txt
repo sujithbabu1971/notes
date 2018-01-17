@@ -1,0 +1,9 @@
+Garbage Collection https://plumbr.io/handbook/garbage-collection-algorithms-implementations
+
+To find out all the ports and the process using those commands in window
+==========================================================================
+netstat -abno | more
+But this needs to be run as an administrator.
+To Open a command prompt window (as Administrator) 
+===================================================
+From "Start\Search box" Enter "cmd" then right-click on "cmd.exe" and select "Run as Administrator"

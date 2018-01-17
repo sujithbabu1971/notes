@@ -1,1 +1,0 @@
-Garbage Collection https://plumbr.io/handbook/garbage-collection-algorithms-implementations
