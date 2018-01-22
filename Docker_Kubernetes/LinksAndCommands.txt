@@ -1,0 +1,16 @@
+Docker Cheat Sheet
+===================
+Docker Cheat Sheet for Spring Developers - Spring Framework Guru
+
+
+ssh -i .ssh/sujith.pem ubuntu@ec2-34-217-60-231.us-west-2.compute.amazonaws.com
+Windows
+==========
+System Id: ec2-54-191-109-213.us-west-2.compute.amazonaws.com
+Password:--
+	yFw;T3ZogfK.gz=e;4&v!Yn?5V&vAxBH
+
+Till Now: 52:16
+From Now: 535.94
+Total - 588.10
+So far - 68.96
