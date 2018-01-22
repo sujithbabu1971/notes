@@ -1,0 +1,13 @@
+The OS is windows here. We are running a sample spring boot application from the centos (a linux version) from that.
+At docker terminal cd to the directory where the Dockerfile exists
+The samplespringboot-0.0.1-SNAPSHOT.jar should be present in that directory. We are naming the docker image to myapp.jar .
+Then run the following command
+	docker build -t myapp .
+
+-t is tagging myapp. dot(.) is for the Dockerfile directory. The default name for docker file is Dockerfile.
+
+Once it is built, run it like the following
+docker run -d -p 8080:8080 myapp
+
+-d is for running as daemon process. samplespringboot-0.0.1-SNAPSHOT.jar is a spring boot web application. Without the -p 8080:8080 option, the http://<IP_address_in_docker_terminal>:8080 did not come up.
+Note that doing "-p 127.0.0.1:8080:8080" or "-p 0.0.0.0:8080:8080 did not bring up the http://localhost:8080 as was expected. This is most likely because I am using docker toolbox. In the actual docker installations of linux, the http://localhost:8080 should come up when we use "-p 127.0.0.18080:8080" or "-p 0.0.0.0:8080:8080"
