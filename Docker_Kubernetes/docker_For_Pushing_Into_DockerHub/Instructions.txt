@@ -1,0 +1,10 @@
+For pushing docker images into docker hub
+============================================
+Inside your global settings.xml, have the following
+	<server> 
+			<id>docker.io</id>
+			<username>sujithbabu1971</username>
+			<password>Power@30</password>
+
+		</server>
+docker.io is the default Id for hub.docker.com
