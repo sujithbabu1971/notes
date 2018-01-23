@@ -8,3 +8,6 @@ Inside your global settings.xml, have the following
 
 		</server>
 docker.io is the default Id for hub.docker.com
+This will push the docker image to the URL https://hub.docker.com/r/sujithbabu1971/springbootdocker/tags/ . It is published to springbootdocker since springbootdocker is the name in pom.xml (refer the following in pom.xml)
+		<docker.image.name>springbootdocker</docker.image.name>
+
